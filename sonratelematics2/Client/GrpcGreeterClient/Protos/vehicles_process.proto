@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcGreeterClient";
+
+package sonartelematics.vehicles.process;
+
+enum ProcessStatus {
+  PENDING = 0;
+  APPROVED = 1;
+  IN_PROCESS = 2;
+  FINISH = 3;
+}
+
+message VehicleProcess {
+  uint64 id = 1;
+  uint64 vehicle_id = 2;
+  string title = 3;
+  string description = 4;
+  ProcessStatus status = 5;
+  string created_at = 6; // Fecha en formato UTC
+  string last_updated = 7; // Fecha en formato UTC
+}
+
+message ProcessUpdate {
+  uint64 id = 1;
+  uint64 process_id = 2;
+  string description = 3;
+  ProcessStatus update_status = 4; // El estado del proceso en el momento en que se almacena el comentario
+  string created_at = 6; // Fecha en formato UTC
+}
+
+message AddProcessRequest {
+  uint64 vehicle_id = 1;
+  string title = 2;
+  string description = 3;
+}
+
+message UpdateProcessStatusRequest {
+  uint64 process_id = 1;
+  ProcessStatus status = 2;
+}
+
+message AddProcessUpdateRequest {
+  uint64 process_id = 1;
+  string description = 2;
+}
+
+message RetrieveVehicleProcessRequest {
+  uint64 vehicle_id = 1;
+}
+
+message RetrieveVehicleProcessResponse {
+  repeated VehicleProcess process = 1;
+}
+
+message RetrieveProcessUpdatesRequest {
+  uint64 process_id = 1;
+}
+
+message RetrieveProcessUpdatesResponse {
+  repeated ProcessUpdate process_updates = 1;
+}
+
+service ProcessService {
+  rpc AddProcess(AddProcessRequest) returns (VehicleProcess);
+  rpc UpdateProcessStatus(UpdateProcessStatusRequest) returns (VehicleProcess);
+  rpc AddProcessUpdate(AddProcessUpdateRequest) returns (ProcessUpdate);
+  rpc RetrieveVehicleProcess(RetrieveVehicleProcessRequest) returns (RetrieveVehicleProcessResponse);
+  rpc RetrieveProcessUpdates(RetrieveProcessUpdatesRequest) returns (RetrieveProcessUpdatesResponse);
+}

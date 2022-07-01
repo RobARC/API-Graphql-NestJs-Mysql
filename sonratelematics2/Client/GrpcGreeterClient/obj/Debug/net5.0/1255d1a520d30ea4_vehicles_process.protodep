@@ -1,0 +1,2 @@
+obj/Debug/net5.0/Protos/VehiclesProcess.cs \
+obj/Debug/net5.0/Protos/VehiclesProcessGrpc.cs: Protos/vehicles_process.proto
