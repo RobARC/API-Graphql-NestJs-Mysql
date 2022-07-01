@@ -119,7 +119,7 @@ Again: `dotnet run`
 
 And you can see the Client is in communication with the server. In this project we have to services Client the first comes with the template and the second with our exercise vehicles.
 
-<img src="./img/Image11.png"></img>
+<img src="./img/Image12.png"></img>
 <br>
 
 You can see the the server response for both services:
