@@ -7,7 +7,7 @@ export const AppDataSource = new DataSource({
   host: 'localhost',
   port: 3306,
   username: 'root',
-  password: '$ofiaM1602',
+  password: 'aqui va tu password',
   database: 'sonar_telematics',
   synchronize: true,
   logging: true,
