@@ -37,9 +37,30 @@ graphql.
 "The GraphQL is a query language for APIs. GraphQL provides a complete and understandable description of the data in your API, gives clients the power to ask for exactly what they need and nothing more, makes it easier to evolve APIs over time, and enables powerful developer tools.
 (Taken from https://graphql.org/)
 
-With this in mind, we can consult our data, in this case vehicles data base. 
+With this in mind, we can consult our data, in this case vehicles data base. But before consult anything, we must create the data:
 
-For example we can make a GET method to obtain all vehicles. (The query method).
+1) First create a vehicle:
+
+<img src="./img/Image20.png"></img>
+<br>
+
+As you can see we had created a vehicle and our API have a response inmmedialty and show the data create. Let's see what happen in the mysql data base. 
+
+The file `data-source.ts` contained the function to connect our app with the DB. There are two parameters: `synchronize` and `loggin`, inside this function with the value in `true`, That mean our app go to stablish communication with our DB inmediatly when it run up.
+
+All this is thanks to the pack `tyorm` that create the new table and data in our DB. Letś take a look to our DB:
+
+<img src="./img/Image15.png"></img>
+<br>
+<img src="./img/Image16.png"></img>
+<br>
+
+If we make a `SELECT * from vehicles` you can see the vehicle that we recently created.
+
+<img src="./img/Image17.png"></img>
+<br>
+
+Now we can make a GET method to obtain all vehicles. (The query method).
 
 <img src="./img/Image3.png"></img>
 
@@ -106,7 +127,7 @@ So we have to build a Grpc Client.
 
 To do this, we chose a simple console project from the list projects with the command: `dotnet new console`
 
-The framework do the magic a we implement our solutions. 
+The framework do the magic and we implement our solutions. 
 
 ## Starting the Client
 
